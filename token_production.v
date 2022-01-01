@@ -6,5 +6,5 @@ module token_production(
     input [2:0] park_number;
     input [2:0] pattern;
     output [2:0] token;
-    token = park_number ^ pattern;
+    assign token = park_number ^ pattern;
 endmodule
