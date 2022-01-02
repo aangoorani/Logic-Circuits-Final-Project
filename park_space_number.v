@@ -23,7 +23,7 @@ module park_space_number(
         else begin
             park_number = 3'bzzz;
         end
-        
+      
     end
  // write your code here, please.
 endmodule
