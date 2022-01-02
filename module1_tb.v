@@ -5,7 +5,7 @@ wire[2:0] park_number;
 
 entry_park uut(entry, parking_capacity, park_number);
 
-always @(*) begin
+initial begin
     entry = 1'b1;
     paarking_capacity = 8'b10100000;
     #20;
