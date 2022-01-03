@@ -8,11 +8,11 @@ module park_space_number_tb;
     //the n th parking slot has index n-1
     initial begin
         enable = 1'b1;
-        parking_capacity = 8'b10100000;
-        //0
+        parking_capacity = 8'bxx100000;
+        //101
         #20;
         enable = 1'b1;
-        parking_capacity = 8'b00100000;
+        parking_capacity = 8'bxxx10000;
         //010
         #20;
         enable = 1'b1;
@@ -20,9 +20,10 @@ module park_space_number_tb;
         //zzz
         #20;
         enable = 1'b0;
-        parking_capacity = 8'b10100000;
+        parking_capacity = 8'bxx100000;
         // zzz
         #20;
+		  $finish;
     end
 
 endmodule
