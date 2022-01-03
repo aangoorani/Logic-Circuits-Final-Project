@@ -7,14 +7,15 @@ module entry_checker(
     input entry;
     input [7:0] parking_capacity;
     output enable;
-    integer i, b = 0;
+    integer i, b;
 	wire reg tmp;
     
 	 always @ (entry or parking_capacity)
 		begin
+			b = 0;
 			for(i=0; i <= 7 ; i = i+1)
 				b = b + parking_capacity[i];
-			if(b > 0)
+			if(b > 0 && enable)
 				 tmp = 1'b1;
 			else
 				 tmp = 1'b0;
