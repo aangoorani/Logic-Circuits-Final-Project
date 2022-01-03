@@ -8,9 +8,9 @@ module entry_checker(
     input [7:0] parking_capacity;
     output enable;
     integer i, b = 0;
-	 wire reg tmp;
+	wire reg tmp;
     
-	 always @ (entry)
+	 always @ (entry or parking_capacity)
 		begin
 			for(i=0; i <= 7 ; i = i+1)
 				b = b + parking_capacity[i];
