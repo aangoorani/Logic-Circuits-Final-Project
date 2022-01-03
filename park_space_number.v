@@ -8,7 +8,6 @@ module park_space_number(
     output reg [2:0] park_number;
 
     always @(*) begin
-        if (enable) begin
             case (parking_capacity)
             8'bxxxxxxx1: park_number = 3'b000;
             8'bxxxxxx10: park_number = 3'b001;
@@ -18,12 +17,11 @@ module park_space_number(
             8'bxx100000: park_number = 3'b101;
             8'bx1000000: park_number = 3'b110;
             8'b10000000: park_number = 3'b111;
+				default: park_number = 3'bzzz;
             endcase
-        end
-        else begin
-            park_number = 3'bzzz;
-        end
-      
+			
+				if(!enable)
+					park_number = 3'bzzz;
     end
- // write your code here, please.
+
 endmodule
