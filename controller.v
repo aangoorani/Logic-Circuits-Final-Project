@@ -46,6 +46,7 @@ output reg[7:0] data_P
            RegP <= 1'b0;
            RegQ <= 1'b0; 
            state <= s0; 
+           rst = 1'b1;
         end
         else begin
             case (state)
@@ -81,6 +82,7 @@ output reg[7:0] data_P
                     state <= s3;
                     RegP <= 1'b1;
                     RegQ <= 1'b1;
+                    rst <= 1'b0;
                 end
 
                 s3:
