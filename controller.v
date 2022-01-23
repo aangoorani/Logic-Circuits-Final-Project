@@ -35,18 +35,19 @@ output reg[7:0] data_P
     //s0 = A, s1 = B, s2 = C, s3 = D, s4 =E
 
     reg RegP, RegQ;
-    reg inP, inQ, rst;
-
+    reg inP, inQ;
+	 reg rst;
     register P(inP,clock,rst,RegP,data_P);
     register Q(inQ,clock,rst,RegQ,data_Q);
 
 
     always @(posedge clock or posedge reset) begin
+			rst <= 1'b0;
         if (reset) begin
            RegP <= 1'b0;
            RegQ <= 1'b0; 
+			  rst <= 1'b1;
            state <= s0; 
-           rst = 1'b1;
         end
         else begin
             case (state)
@@ -82,9 +83,9 @@ output reg[7:0] data_P
                     state <= s3;
                     RegP <= 1'b1;
                     RegQ <= 1'b1;
-                    rst <= 1'b0;
-                end
+						  reset <= 1'b0;
 
+                end
                 s3:
                 if (request == 1'b0) begin
                     RegP <= 1'b0;
@@ -95,11 +96,11 @@ output reg[7:0] data_P
                     if (confirm) begin
                         if (TimeData[4] && TimeData[5] && TimeData[6] && TimeData[7]) begin
                             inP <= TimeData;
-                            RegQ = 1'b0;
+                            RegQ <= 1'b0;
                         end
                         else begin
                             inQ <= TimeData;
-                            RegP = 1'b0; 
+                            RegP <= 1'b0; 
                         end
                     end
                 end
